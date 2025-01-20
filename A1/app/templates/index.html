@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Similarity Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .note {
+            font-style: italic;
+            color: #555;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .warning {
+            color: #ff9800;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff3e0;
+            border-left: 5px solid #ff9800;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Search Similar Context</h1>
+    </header>
+
+    <div class="container">
+        <form method="POST">
+            <label for="query">Enter Search Query:</label>
+            <input type="text" id="query" name="query" required><br><br>
+
+            <label for="model_choice">Choose Model:</label>
+            <select id="model_choice" name="model_choice" required>
+                <option value="glove">GloVe</option>
+                <option value="neg">Negative Sampling</option>
+                <option value="skipgram">Skipgram</option>
+            </select><br><br>
+
+            <input type="submit" value="Search">
+        </form>
+
+        <div class="note">
+            <p><em>Note: The models are trained on the Reuters corpus, which is a collection of news articles covering financial, business, and political topics. The models may perform better with queries related to these domains.</em></p>
+        </div>
+
+        {% if warning_message %}
+            <div class="warning">
+                <p>{{ warning_message }}</p>
+            </div>
+        {% endif %}
+
+        {% if top_similar_words %}
+            <h2>Top 10 Similar Words:</h2>
+            <ul>
+                {% for word, score in top_similar_words %}
+                    <li>{{ word }}: {{ score }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
