@@ -47,7 +47,6 @@ This project focuses on building a Natural Language Processing (NLP) system to i
 
 
 
-
 ## Corpus Used for Training
 
 The embeddings were trained on a subset of the [NLTK Reuters Corpus](https://www.nltk.org/book/ch02.html), which contains categorized news articles. Preprocessing steps included:
@@ -78,6 +77,22 @@ This corpus provides a domain-specific dataset for testing and analyzing word em
 
 ---
 
+## Web Application
+
+The web application allows users to input a query and retrieve the top 10 contextually similar paragraphs. The Flask-based app leverages the trained embeddings (Skipgram, GloVe, etc.) to compute similarities between the query and a dataset of paragraphs. The system ranks these paragraphs based on the highest dot product similarity.
+
+### Features:
+- Simple input interface for entering queries.
+- Retrieval of similar paragraphs based on trained word embeddings.
+- Displays the most similar paragraphs to the user’s query.
+
+Here is a screenshot of the web app interface:
+
+![Web app screenshot](https://github.com/MirAliNaqiTalpur/NLP-Assignments/blob/main/A1/webapp_screenshot.png)
+
+You can access the web application through the provided link (once hosted) or run it locally by setting up the Flask environment.
+
+---
 ## Additional Notes
 
 1. The dataset used for training was derived from publicly available sources.
