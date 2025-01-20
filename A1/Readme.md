@@ -26,14 +26,21 @@ This project focuses on building a Natural Language Processing (NLP) system to i
 ## Directory Structure
 
 ```
-|-- app/
-|   |-- app.py              # Flask application entry point
-|   |-- embedding/          # Contains trained embedding models
-|   |   |-- glove_embeds.pickle      
-|   |   |-- neg_embeds.pickle      
-        |-- skipgram_embeds.pickle
-|   |-- templates/
-|       |-- index.html      # HTML template for the web interface
+|-- A1/
+|   |-- README.md                         # Project README file
+|   |-- st125001_mirali_A1_assignment.ipynb # Jupyter notebook for the assignment
+|   |-- word-test.v1.txt                  # Test data for word similarity or embeddings evaluation
+|   |-- wordsim_similarity_goldstandard.txt # Word similarity gold standard (for evaluation)
+|   |-- app/
+|   |   |-- app.py                       # Flask application entry point
+|   |   |-- embedding/                   # Contains trained embedding models
+|   |   |   |-- glove_embeds.pickle      # GloVe embedding model (Pickle format)
+|   |   |   |-- neg_embeds.pickle        # Negative embeddings (Pickle format)
+|   |   |   |-- skipgram_embeds.pickle   # Skipgram embeddings (Pickle format)
+|   |   |-- templates/                   # HTML templates for the web interface
+|   |   |   |-- index.html               # HTML template for the main page
+|   |-- glove.6B/                        # GloVe model folder with pre-trained vectors
+|   |   |-- glove.6B.100d.txt            # GloVe 100-dimensional pre-trained embeddings
 ```
 
 ---
