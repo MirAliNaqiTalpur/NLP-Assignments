@@ -46,41 +46,7 @@ This project focuses on building a Natural Language Processing (NLP) system to i
 ---
 
 
-## Instructions
 
-### 1. Setup
-
-#### Prerequisites
-Ensure you have Python 3.8 or above installed on your system.
-
-#### Installation Steps
-```bash
-# Clone the repository
-git clone <repository_url>
-cd <repository_name>
-
-# Install required packages
-pip install -r requirements.txt
-```
-
-### 2. Running the Notebook
-The Jupyter Notebook (`notebooks/test.ipynb`) contains all the code for embedding training, evaluation, and analysis. Open it in your preferred environment to explore step-by-step implementations:
-
-```bash
-jupyter notebook notebooks/test.ipynb
-```
-
-### 3. Running the Web Application
-To start the Flask web application:
-
-```bash
-cd app
-python app.py
-```
-
-Open your browser and navigate to `http://127.0.0.1:5000`. Enter your query in the input box to retrieve the top 10 similar contexts.
-
----
 
 ## Corpus Used for Training
 
