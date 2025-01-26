@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Generator</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input, button, select, textarea {
+            font-size: 1rem;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        input, textarea {
+            width: 100%;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Generated Text Styling */
+        .generated-text {
+            margin-top: 2rem;
+            background-color: #f1f1f1;
+            padding: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Generation App</h1>
+        <p style="text-align: center; color: #555;">This app uses the AG's News Topic Classification Dataset, which consists of over 120,000 news articles classified into 4 categories: World, Sports, Business, and Sci/Tech.</p>
+        <form method="POST">
+            <label for="prompt">Enter a text prompt:</label>
+            <input type="text" id="prompt" name="prompt" placeholder="Start typing..." required>
+            
+            <label for="max_seq_len">Max Sequence Length:</label>
+            <input type="number" id="max_seq_len" name="max_seq_len" value="30" min="1" max="100">
+            
+            <label for="temperature">Temperature:</label>
+            <select id="temperature" name="temperature">
+                <option value="0.5">0.5</option>
+                <option value="0.7" selected>0.7</option>
+                <option value="0.8">0.8</option>
+                <option value="1.0">1.0</option>
+            </select>
+            
+            <button type="submit">Generate</button>
+        </form>
+
+        {% if generated_text %}
+            <div class="generated-text">
+                <h2>Generated Text:</h2>
+                <p>{{ generated_text }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
