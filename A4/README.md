@@ -15,13 +15,14 @@ This project involves training a BERT-based model for the task of **Natural Lang
 - [Training Parameters](#training-parameters)
 - [Model Architecture](#model-architecture)
 - [Limitations and Improvements](#limitations-and-improvements)
+- [Screenshots](#screenshots)
 
 ## Pre-training
 
 ### Dataset
 
 - **Dataset**: BookCorpus
-- **Source**: Hugging Face (Community Datasets)
+- **Source**: [Hugging Face Community Datasets](https://huggingface.co/datasets/bookcorpus) 
 - **Description**: The BookCorpus dataset consists of text extracted from a large collection of books. It is diverse and suitable for learning general language patterns across multiple genres and topics.
 - **Total Samples**: 1,000,000
 - **Samples Used for Training**: 100,000
@@ -52,6 +53,14 @@ This project involves training a BERT-based model for the task of **Natural Lang
 - **Key/Value Dimension (d_k, d_v)**: 64
 - **Number of Segments (n_segments)**: 2
 
+### Siamese Network Structure  
+
+Below is the **Siamese Network Architecture** used for training sentence embeddings:  
+
+![Siamese Network Architecture](images/siamese-bert.webp)  
+*Figure 1: Siamese Network Architecture for Sentence Transformers (Image Credit: [Pinecone](https://www.pinecone.io/learn/series/nlp/train-sentence-transformers-softmax/))*  
+
+
 #### Challenges
 
 - **GPU Memory Constraints**: The batch size was limited to 6 due to available GPU memory. Larger batch sizes could improve performance but may cause out-of-memory errors.
@@ -68,14 +77,15 @@ This project involves training a BERT-based model for the task of **Natural Lang
 
 ### Datasets
 
-- **SNLI** and **MNLI**
-- **Source**: Stanford NLP and NYU Machine Learning for Language (Hugging Face)
+- **SNLI** and **MNLI** (Merged for training)
+- **Source**:  
+  - SNLI: [Stanford NLP on Hugging Face](https://huggingface.co/datasets/snli)  
+  - MNLI: [NYU Machine Learning for Language on Hugging Face](https://huggingface.co/datasets/mnli)  
 - **Description**: Both SNLI and MNLI are widely used datasets for Natural Language Inference (NLI) tasks. They consist of sentence pairs and labels indicating the relationship (entailment, contradiction, neutral).
-  
+
 | **Dataset**       | **Samples Used for Training** | **Validation Samples** | **Test Samples** |
 |-------------------|-------------------------------|------------------------|------------------|
-| SNLI              | 100,000                       | 10,000                 | 10,000           |
-| MNLI              | 100,000                       | 10,000                 | 10,000           |
+| SNLI + MNLI (Merged) | 100,000                       | 10,000                 | 10,000           |
 
 ### Fine-tuning Parameters
 
@@ -98,7 +108,7 @@ This project involves training a BERT-based model for the task of **Natural Lang
 
 ## Training Parameters Summary
 
-| **Parameter**         | **Pre-training (BookCorpus)** | **Fine-tuning (SNLI & MNLI)** |
+| **Parameter**         | **Pre-training (BookCorpus)** | **Fine-tuning (SNLI & MNLI Merged)** |
 |-----------------------|------------------------------|------------------------------|
 | Max Sequence Length   | 1000 tokens                  | 128 tokens                   |
 | Batch Size            | 6                            | 32                           |
@@ -127,5 +137,25 @@ This project involves training a BERT-based model for the task of **Natural Lang
 - **Hardware Upgrade**: Increasing the available GPU memory could allow for larger batch sizes and faster training.
 - **Regularization**: Apply dropout or weight decay to prevent overfitting, especially during fine-tuning.
 - **Learning Rate Tuning**: Implement a learning rate schedule to improve convergence during training.
-  
+
+## Screenshots
+
+Here are some screenshots of the **NLI Text Similarity Classifier** in action:
+
+### Model Interface
+
+![App Screenshot](./images/app_interface.png)
+
+### Classification Report
+
+![Classification Report](./images/classification_report.png
+
+---
+
+## References
+- **Siamese Network Image**: Adapted from [Pinecone NLP Guide](https://www.pinecone.io/learn/series/nlp/train-sentence-transformers-softmax/)  
+- **BookCorpus Dataset**: [Hugging Face Community Datasets](https://huggingface.co/datasets/bookcorpus)  
+- **SNLI Dataset**: [Stanford NLP on Hugging Face](https://huggingface.co/datasets/snli)  
+- **MNLI Dataset**: [NYU Machine Learning for Language on Hugging Face](https://huggingface.co/datasets/mnli)  
+
 
