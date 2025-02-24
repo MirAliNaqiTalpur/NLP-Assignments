@@ -148,10 +148,9 @@ Here are some screenshots of the **NLI Text Similarity Classifier** in action:
 
 ### Classification Report
 
-![Classification Report](./images/classification_report.png
+![Classification Report](./images/classification_report.png)
 
 ---
-
 ## References
 - **Siamese Network Image**: Adapted from [Pinecone NLP Guide](https://www.pinecone.io/learn/series/nlp/train-sentence-transformers-softmax/)  
 - **BookCorpus Dataset**: [Hugging Face Community Datasets](https://huggingface.co/datasets/bookcorpus)  
