@@ -94,7 +94,7 @@ Below is the **Siamese Network Architecture** used for training sentence embeddi
 |-----------------------|-----------------------|
 | Max Sequence Length   | 128 tokens            |
 | Batch Size            | 32                    |
-| Number of Epochs      | 5                     |
+| Number of Epochs      | 1                     |
 
 ## Model Evaluation
 
@@ -145,7 +145,7 @@ The fine-tuned BERT model was evaluated on a test set of 10,000 samples from the
 | Max Sequence Length   | 1000 tokens                  | 128 tokens                   |
 | Batch Size            | 6                            | 32                           |
 | Epochs                | 1000                         | 5                            |
-| Final Loss            | 3.649                        | -                            |
+| Final Loss            | 3.649                        | 1.06                          |
 
 ## Model Architecture Summary
 
