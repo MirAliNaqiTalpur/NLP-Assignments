@@ -57,7 +57,7 @@ This project involves training a BERT-based model for the task of **Natural Lang
 
 Below is the **Siamese Network Architecture** used for training sentence embeddings:  
 
-![Siamese Network Architecture](images/siamese-bert.webp)  
+![Siamese Network Architecture](./images/Siamese-bert.webp)  
 *Figure 1: Siamese Network Architecture for Sentence Transformers (Image Credit: [Pinecone](https://www.pinecone.io/learn/series/nlp/train-sentence-transformers-softmax/))*  
 
 
