@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Similarity - NLI Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .model-info {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        .model-info h3 {
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        .model-info ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>NLI Text Similarity Classifier</h2>
+        <form id="nliForm">
+            <input type="text" id="premise" name="premise" placeholder="Enter Premise" required>
+            <input type="text" id="hypothesis" name="hypothesis" placeholder="Enter Hypothesis" required>
+            <button type="submit">Check Relationship</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <!-- Model Information Section -->
+    <div class="model-info">
+        <h3>About This Model</h3>
+        <p>
+            This classifier predicts the relationship between two sentences based on **Natural Language Inference (NLI)**. 
+            It was trained using **BERT-based architecture** on **SNLI** and **MNLI** datasets with 1 epoch.
+        </p>
+        <p>
+            The model categorizes input sentence pairs into:
+            <ul>
+                <li><strong>Entailment</strong> (High Similarity) – The second sentence logically follows from the first.</li>
+                <li><strong>Neutral</strong> (Moderate Similarity) – The sentences are related but do not imply each other.</li>
+                <li><strong>Contradiction</strong> (Low Similarity) – The second sentence contradicts the first.</li>
+            </ul>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById("nliForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let premise = document.getElementById("premise").value;
+            let hypothesis = document.getElementById("hypothesis").value;
+
+            // Send POST request with premise and hypothesis data
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `premise=${encodeURIComponent(premise)}&hypothesis=${encodeURIComponent(hypothesis)}`
+            })
+            .then(response => response.json())  // Expecting JSON response
+            .then(data => {
+                // Handle the response with label and score
+                if (data.label) {
+                    document.getElementById("result").innerText = `Label: ${data.label}, Similarity Score: ${data.score}`;
+                } else if (data.error) {
+                    document.getElementById("result").innerText = `Error: ${data.error}`;
+                } else {
+                    document.getElementById("result").innerText = "Label: undefined";  // In case the response is not as expected
+                }
+            })
+            .catch(error => {
+                // If there's any error in the request/response
+                document.getElementById("result").innerText = "Error: " + error;
+            });
+        });
+    </script>
+</body>
+</html>
