@@ -12,6 +12,7 @@ This project involves training a BERT-based model for the task of **Natural Lang
 
 - [Pre-training](#pre-training)
 - [Fine-tuning](#fine-tuning)
+- [Model Evaluation](#model-evaluation)
 - [Training Parameters](#training-parameters)
 - [Model Architecture](#model-architecture)
 - [Limitations and Improvements](#limitations-and-improvements)
@@ -94,6 +95,37 @@ Below is the **Siamese Network Architecture** used for training sentence embeddi
 | Max Sequence Length   | 128 tokens            |
 | Batch Size            | 32                    |
 | Number of Epochs      | 5                     |
+
+## Model Evaluation
+
+### Performance Metrics
+
+The fine-tuned BERT model was evaluated on a test set of 10,000 samples from the merged SNLI and MNLI datasets. The evaluation metrics are as follows:
+
+- **Average Cosine Similarity**: 0.7680  
+  This indicates a relatively high semantic similarity between sentence pairs, suggesting that the model is capturing meaningful relationships between sentences.
+
+- **Classification Report**:
+
+| Class         | Precision | Recall | F1-Score | Support |
+|---------------|-----------|--------|----------|---------|
+| **Entailment** | 0.35      | 0.84   | 0.50     | 3452    |
+| **Neutral**    | 0.26      | 0.01   | 0.01     | 3206    |
+| **Contradiction** | 0.35   | 0.18   | 0.24     | 3342    |
+
+- **Overall Accuracy**: 0.35
+
+- **Macro Average**:
+  - Precision: 0.32
+  - Recall: 0.34
+  - F1-Score: 0.25
+
+- **Weighted Average**:
+  - Precision: 0.32
+  - Recall: 0.35
+  - F1-Score: 0.26
+
+
 
 #### Challenges
 
