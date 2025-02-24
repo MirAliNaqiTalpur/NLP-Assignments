@@ -15,7 +15,6 @@ This project involves training a BERT-based model for the task of **Natural Lang
 - [Training Parameters](#training-parameters)
 - [Model Architecture](#model-architecture)
 - [Limitations and Improvements](#limitations-and-improvements)
-- [Usage](#usage)
 
 ## Pre-training
 
@@ -129,8 +128,4 @@ This project involves training a BERT-based model for the task of **Natural Lang
 - **Regularization**: Apply dropout or weight decay to prevent overfitting, especially during fine-tuning.
 - **Learning Rate Tuning**: Implement a learning rate schedule to improve convergence during training.
   
-## Usage
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/nli-text-similarity-classifier.git
