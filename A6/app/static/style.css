@@ -1,0 +1,35 @@
+body {
+    background-color: #f0f2f5;
+}
+
+.chat-box {
+    height: 600px;
+    overflow-y: auto;
+}
+
+#chat-messages {
+    padding: 20px;
+    height: 450px;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.user-message {
+    background-color: #e3f2fd;
+    margin-left: 20%;
+}
+
+.bot-message {
+    background-color: #fff;
+    margin-right: 20%;
+}
+
+.predefined-questions {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
