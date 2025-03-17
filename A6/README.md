@@ -8,7 +8,7 @@ This project implements a personal chatbot that can answer questions about me by
 
 ### Screenshot
 
-![Chatbot Web Interface](images/ss.png)
+![Chatbot Web Interface](images/SS.png)
 
 *Screenshot of the chatbot web interface showing interaction with the personal assistant*
 
