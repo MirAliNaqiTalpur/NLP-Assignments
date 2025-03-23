@@ -65,7 +65,7 @@ Results Table:
 - **Screenshots**:
   - After offensive  input (“you are so dumb”):  
     ![Offensive Input](images/ss-1.png)
-    - After hate  input (“I hate your”):  
+    - After hate  input (“I hate you”):  
     ![Hate Input](images/ss-2.png)
   - After neutral  input (“how are you doing?”):  
     ![Positive Input](images/ss-3.png)
