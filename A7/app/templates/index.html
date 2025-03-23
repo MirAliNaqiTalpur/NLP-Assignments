@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Toxicity Classifier</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.1em;
+            color: #666;
+            margin: 10px 0;
+        }
+        textarea {
+            width: 80%;
+            max-width: 400px;
+            height: 120px;
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            resize: none;
+            transition: border-color 0.3s;
+        }
+        textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin-top: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #e74c3c;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .info-toggle {
+            cursor: pointer;
+            color: #3498db;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        .info-box {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+            display: none; /* Hidden by default */
+        }
+        .info-box.active {
+            display: block; /* Shown when toggled */
+        }
+        .info-box h2 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .info-box p {
+            font-size: 1em;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Toxicity Classifier</h1>
+        <p>Enter text to classify its toxicity level</p>
+        <form method="POST">
+            <textarea name="text" placeholder="Type your text here...">{{ input_text }}</textarea><br>
+            <button type="submit">Classify</button>
+        </form>
+        {% if prediction %}
+            <div class="result">{{ prediction }}</div>
+        {% endif %}
+
+        <div class="info-toggle" onclick="toggleInfo()">Show Project Info</div>
+        <div class="info-box" id="infoBox">
+            <h2>About This Project</h2>
+            <p>This web app classifies text as toxic or non-toxic using a machine learning model trained on the Hate Speech and Offensive Language dataset (~22,000 examples).</p>
+            <p><strong>Model:</strong> Odd Layer Student (6-layer BERT, distilled from bert-base-uncased, 91.8% accuracy).</p>
+            <p><strong>Labels:</strong> Hate Speech, Offensive Language, Neither.</p>
+            <p>The project compares distillation (odd/even layers) and LoRA techniques for text classification.</p>
+        </div>
+    </div>
+    <script>
+        function toggleInfo() {
+            var infoBox = document.getElementById('infoBox');
+            infoBox.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
